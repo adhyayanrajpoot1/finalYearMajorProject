@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction</title>
+    <style>
+        table.center {
+        margin-left:auto; 
+        margin-right:auto;
+        }
+        body{
+            /* background-image: url("https://img.freepik.com/free-vector/healthcare-background-with-medical-symbols-hexagonal-frame_1017-26363.jpg"); */
+            background-color: aqua;
+        };
+    </style>
+    
+</head>
+<body style="text-align : center;  background-color: aqua;">
+    <h1>Disease Prediction System</h1>
+    
+    <form action="/predict" method="post" name="form1">
+    <h1 style="color: Black;">Select the symptoms</h1>
+    <table class="center">
+    <tr>
+        <td><label for="">itching</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="itching" id="yes" value=  "1">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="itching" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">skin_rash</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="skin_rash" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="skin_rash" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">nodal_skin_eruptions</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="nodal_skin_eruptions" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="nodal_skin_eruptions" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">continuous_sneezing</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="continuous_sneezing" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="continuous_sneezing" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">shivering</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="shivering" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="shivering" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">chills</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="chills" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="chills" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">joint_pain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="joint_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="joint_pain" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">stomach_pain</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="stomach_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="stomach_pain" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">acidity</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="acidity" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="acidity" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">ulcers_on_tongue</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="ulcers_on_tongue" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="ulcers_on_tongue" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">muscle_wasting</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="muscle_wasting" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="muscle_wasting" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">vomiting</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="vomiting" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="vomiting" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">burning_micturition</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="burning_micturition" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="burning_micturition" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">spotting_urination</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="spotting_urination" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="spotting_urination" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">fatigue</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="fatigue" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="fatigue" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">weight_gain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="weight_gain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="weight_gain" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">anxiety</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="anxiety" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="anxiety" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">cold_hands_and_feets</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="cold_hands_and_feets" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="cold_hands_and_feets" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">mood_swings</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="mood_swings" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="mood_swings" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">weight_loss</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="weight_loss" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="weight_loss" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">restlessness</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="restlessness" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="restlessness" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">lethargy</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="lethargy" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="lethargy" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">patches_in_throat</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="patches_in_throat" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="patches_in_throat" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">irregular_sugar_level</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="irregular_sugar_level" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="irregular_sugar_level" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">cough</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="cough" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="cough" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">high_fever</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="high_fever" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="high_fever" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">sunken_eyes</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="sunken_eyes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="sunken_eyes" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">breathlessness</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="breathlessness" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="breathlessness" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">sweating</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="sweating" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="sweating" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">dehydration</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="dehydration" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="dehydration" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">indigestion</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="indigestion" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="indigestion" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">headache</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="headache" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="headache" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">yellowish_skin</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="yellowish_skin" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="yellowish_skin" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">dark_urine</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="dark_urine" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="dark_urine" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">nausea</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="nausea" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="nausea" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">loss_of_appetite</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="loss_of_appetite" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="loss_of_appetite" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">pain_behind_the_eyes</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="pain_behind_the_eyes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="pain_behind_the_eyes" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">back_pain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="back_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="back_pain" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">constipation</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="constipation" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="constipation" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">abdominal_pain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="abdominal_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="abdominal_pain" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">diarrhoea</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="diarrhoea" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="diarrhoea" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">mild_fever</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="mild_fever" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="mild_fever" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">yellow_urine</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="yellow_urine" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="yellow_urine" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">yellowing_of_eyes</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="yellowing_of_eyes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="yellowing_of_eyes" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">acute_liver_failure</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="acute_liver_failure" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="acute_liver_failure" id="no" value= "0"></td>
+    </tr>
+     
+     <tr>
+        <td><label for="">fluid_overload</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="fluid_overload" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="fluid_overload" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">swelling_of_stomach</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="swelling_of_stomach" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="swelling_of_stomach" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">swelled_lymph_nodes</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="swelled_lymph_nodes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="swelled_lymph_nodes" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">malaise</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="malaise" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="malaise" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">blurred_and_distorted_vision</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="blurred_and_distorted_vision" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="blurred_and_distorted_vision" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">phlegm</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="phlegm" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="phlegm" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">throat_irritation</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="throat_irritation" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="throat_irritation" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">redness_of_eyes</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="redness_of_eyes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="redness_of_eyes" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">sinus_pressure</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="sinus_pressure" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="sinus_pressure" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">runny_nose</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="runny_nose" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="runny_nose" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">congestion</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="congestion" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="congestion" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">chest_pain</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="chest_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="chest_pain" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">weakness_in_limbs</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="weakness_in_limbs" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="weakness_in_limbs" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">fast_heart_rate</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="fast_heart_rate" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="fast_heart_rate" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">pain_during_bowel_movements</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="pain_during_bowel_movements" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="pain_during_bowel_movements" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">pain_in_anal_region</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="pain_in_anal_region" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="pain_in_anal_region" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">bloody_stool</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="bloody_stool" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="bloody_stool" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">irritation_in_anus</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="irritation_in_anus" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="irritation_in_anus" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">neck_pain</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="neck_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="neck_pain" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">dizziness</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="dizziness" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="dizziness" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">cramps</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="cramps" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="cramps" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">bruising</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="bruising" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="bruising" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">obesity</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="obesity" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="obesity" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">swollen_legs</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="swollen_legs" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="swollen_legs" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">swollen_blood_vessels</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="swollen_blood_vessels" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="swollen_blood_vessels" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">puffy_face_and_eyes</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="puffy_face_and_eyes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="puffy_face_and_eyes" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">enlarged_thyroid</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="enlarged_thyroid" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="enlarged_thyroid" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">brittle_nails</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="brittle_nails" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="brittle_nails" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">swollen_extremeties</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="swollen_extremeties" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="swollen_extremeties" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">excessive_hunger</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="excessive_hunger" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="excessive_hunger" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">extra_marital_contacts</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="extra_marital_contacts" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="extra_marital_contacts" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">drying_and_tingling_lips</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="drying_and_tingling_lips" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="drying_and_tingling_lips" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">slurred_speech</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="slurred_speech" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="slurred_speech" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">knee_pain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="knee_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="knee_pain" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">hip_joint_pain</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="hip_joint_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="hip_joint_pain" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">muscle_weakness</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="muscle_weakness" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="muscle_weakness" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">stiff_neck</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="stiff_neck" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="stiff_neck" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">swelling_joints</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="swelling_joints" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="swelling_joints" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">movement_stiffness</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="movement_stiffness" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="movement_stiffness" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">spinning_movements</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="spinning_movements" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="spinning_movements" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">loss_of_balance</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="loss_of_balance" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="loss_of_balance" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">unsteadiness</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="unsteadiness" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="unsteadiness" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">weakness_of_one_body_side</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="weakness_of_one_body_side" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="weakness_of_one_body_side" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">loss_of_smell</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="loss_of_smell" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="loss_of_smell" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">bladder_discomfort</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="bladder_discomfort" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="bladder_discomfort" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">foul_smell_of_urine</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="foul_smell_of_urine" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="foul_smell_of_urine" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">continuous_feel_of_urine</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="continuous_feel_of_urine" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="continuous_feel_of_urine" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">passage_of_gases</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="passage_of_gases" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="passage_of_gases" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">internal_itching</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="internal_itching" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="internal_itching" id="no" value= "0"></td>
+    </tr>
+     <tr>
+        <td><label for="">toxic_look_(typhos)</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="toxic_look_(typhos)" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="toxic_look_(typhos)" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">depression</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="depression" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="depression" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">irritability</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="irritability" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="irritability" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">muscle_pain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="muscle_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="muscle_pain" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">altered_sensorium</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="altered_sensorium" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="altered_sensorium" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">red_spots_over_body</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="red_spots_over_body" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="red_spots_over_body" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">belly_pain</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="belly_pain" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="belly_pain" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">abnormal_menstruation</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="abnormal_menstruation" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="abnormal_menstruation" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">dischromic'</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="dischromic" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="dischromic" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">watering_from_eyes</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="watering_from_eyes" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="watering_from_eyes" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">increased_appetite</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="increased_appetite" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="increased_appetite" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">polyuria</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="polyuria" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="polyuria" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">family_history</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="family_history" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="family_history" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">mucoid_sputum</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="mucoid_sputum" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="mucoid_sputum" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">rusty_sputum</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="rusty_sputum" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="rusty_sputum" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">lack_of_concentration</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="lack_of_concentration" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="lack_of_concentration" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">visual_disturbances</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="visual_disturbances" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="visual_disturbances" id="no" value= "0"></td>
+    </tr>
+       <tr>
+        <td><label for="">receiving_blood_transfusion</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="receiving_blood_transfusion" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="receiving_blood_transfusion" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">receiving_unsterile_injections</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="receiving_unsterile_injections" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="receiving_unsterile_injections" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">coma</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="coma" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="coma" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">stomach_bleeding</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="stomach_bleeding" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="stomach_bleeding" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">distention_of_abdomen</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="distention_of_abdomen" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="distention_of_abdomen" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">history_of_alcohol_consumption</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="history_of_alcohol_consumption" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="history_of_alcohol_consumption" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">fluid_overload.1</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="fluid_overload.1" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="fluid_overload.1" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">blood_in_sputum</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="blood_in_sputum" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="blood_in_sputum" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">prominent_veins_on_calf</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="prominent_veins_on_calf" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="prominent_veins_on_calf" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">palpitations</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="palpitations" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="palpitations" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">painful_walking</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="painful_walking" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="painful_walking" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">pus_filled_pimples</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="pus_filled_pimples" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="pus_filled_pimples" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">blackheads</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="blackheads" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="blackheads" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">scurring</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="scurring" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="scurring" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">skin_peeling</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="skin_peeling" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="skin_peeling" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">silver_like_dusting</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="silver_like_dusting" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="silver_like_dusting" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">small_dents_in_nails</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="small_dents_in_nails" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="small_dents_in_nails" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">inflammatory_nails</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="inflammatory_nails" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="inflammatory_nails" id="no" value= "0"></td>
+    </tr>
+     
+
+    <tr>
+        <td><label for="">blister</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="blister" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO <input type="radio" name="blister" id="no" value= "0"></td>
+    </tr>
+     
+
+      <tr>
+        <td><label for="">red_sore_around_nose</label></td>
+        <td>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  YES <input type="radio" name="red_sore_around_nose" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="red_sore_around_nose" id="no" value= "0"></td>
+    </tr>
+     
+    <tr>
+        <td><label for="">yellow_crust_ooze</label></td>
+        <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES <input type="radio" name="yellow_crust_ooze" id="yes" value=  "1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  NO <input type="radio" name="yellow_crust_ooze" id="no" value= "0"></td>
+    </tr>
+     
+
+  
+     
+   <tr>
+    <td> <h3 style="color : black">{{result}}</h3> </td>
+   </tr>
+   <tr>
+    <td>
+        <button type="submit" value="submit"> Submit</button>
+    </td>
+    <td><button type="reset" value="reset">Reset</button></td>
+   </tr>
+
+</table>
+</form>
+</body>
+</html>
